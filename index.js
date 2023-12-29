@@ -20,31 +20,22 @@
       e.target.classList.add("selected");
       renderSingleEmployee(emp_id);
     }
+    if (e.target.tagName === "BUTTON") {
+  employees = employees.filter(
+    (emp) => emp.id.toString() !== e.target.parentNode.id
+  );
+  if (emp_id.toString() === e.target.parentNode.id) {
+    selectedEmployee = employees ? employees[0] : -1;
+    emp_id = selectedEmployee?.id;
+  }
+  render();
+  renderSingleEmployee(emp_id);
+}
   });
-  // const addBtn = document.querySelector(".add-emp");
 
   const handleAdd = () => {
     document.getElementById("app").classList.add("modal-open");
     document.querySelector(".emp-modal").style.display = "flex";
-  };
-
-  const handleSubmit = () => {
-    // const newEmployee = {};
-    // const firstName = document.getElementById("name").value;
-    // const lastName = "";
-    // const dob = document.getElementById("dob").value;
-    // const email = document.getElementById("email").value;
-    // newEmployee["id"] = 200;
-    // newEmployee["firstName"] = firstName;
-    // newEmployee["lastName"] = lastName;
-    // newEmployee["dob"] = dob;
-    // newEmployee["email"] = email;
-    // employees.push(newEmployee);
-    // document.getElementById("app").classList.remove("modal-open");
-    // document.querySelector(".emp-modal").style.display = "none";
-    // console.log("er", employees, newEmployee);
-    // render();
-    // renderSingleEmployee(emp_id);
   };
   const addForm = document.querySelector(".add-emp-form");
   addForm.addEventListener("submit", (e) => {
